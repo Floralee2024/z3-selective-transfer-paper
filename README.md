@@ -1,6 +1,6 @@
 # Selection-Gated Transfer Under Sparse State–Action Support
 
-This repository contains the manuscript and reproducibility materials for a synthetic study of selective transfer when state and state–action cells are sparse or held out.
+This public repository contains the manuscript and reproducibility materials for a synthetic study of selective transfer when state and state–action cells are sparse or held out.
 
 ## Main result
 
@@ -15,20 +15,20 @@ The result is predictive synthetic evidence. It is not causal, policy, reward, r
 
 ## Repository layout
 
-- `paper/manuscript.md` — complete manuscript draft.
-- `paper/claims.md` — claim-to-evidence ledger and non-claims.
-- `evidence/` — compact evidence snapshots and provenance notes.
-- `reproducibility/` — commands, environment notes, and artifact mapping.
-- `CITATION.cff` — citation metadata for the repository.
+- paper/manuscript.md — complete manuscript draft.
+- paper/claims.md — claim-to-evidence ledger and non-claims.
+- vidence/ — compact evidence snapshots and provenance notes.
+- eproducibility/ — commands, environment notes, and artifact mapping.
+- CITATION.cff — citation metadata for the repository.
 
 ## Reproducibility status
 
-The manuscript is based on frozen result packages produced before this repository was assembled. The large fixture, model, and NPZ bundles are not copied into Git because of their size and because the source workspace is not itself a public artifact archive. The exact source paths, hashes, aggregators, and run commands are recorded in `evidence/` and `reproducibility/`.
+The repository is the compact manuscript and provenance layer. Large fixtures, model artifacts, and NPZ bundles are distributed in the companion immutable artifact release rather than committed into Git history.
 
-For a submission-grade release, publish the large immutable artifact bundle separately and add its DOI or release URL to `reproducibility/ARTIFACT_RELEASE.md`.
+The public artifact release is [v0.1.0](https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0). Its direct archive URL, SHA256, and version are recorded in [eproducibility/ARTIFACT_RELEASE.md](reproducibility/ARTIFACT_RELEASE.md).
 
 ## Status
 
-Private manuscript repository. The wording intentionally preserves the strongest evidence boundary supported by the experiments; public release still requires author metadata and an immutable artifact archive.
+Public manuscript repository with a versioned reproducibility artifact release. The archive supports synthetic fixed-action predictive claims only; it does not establish causal effects, policy improvement, reward improvement, planning ability, real-data validity, or deployment safety.
 
 The compact evidence package includes the primary exact held-unit high-N aggregate and its repeat-action sensitivity aggregate. Both preserve the same negative conclusion about universal accumulation and endpoint retention.
