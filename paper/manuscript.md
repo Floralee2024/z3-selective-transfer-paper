@@ -2,13 +2,13 @@
 
 ## A synthetic study of low-dimensional mechanisms, selection, exact rollout, and high-N scaling
 
-**Status:** public preprint draft; synthetic predictive study; not a causal or deployment evaluation.
+**Status:** preprint manuscript draft; synthetic predictive study; not a causal or deployment evaluation.
 
 ## Abstract
 
 When a model must predict transitions for rarely observed states and state–action cells, sharing structure across states can reduce variance but can also create negative transfer. We study this trade-off in a controlled synthetic benchmark with held-out state and action cells, explicit train/selection/test separation, rank-admissible model families, and an autoregressive (AR) or no-transfer fallback. The study evaluates unselected shared mechanisms, selection-gated Stage-1 mechanisms, low-dimensional action-conditioned candidates, Stage-2 nullspace corrections, exact multi-step distribution propagation, and three sequence-count levels.
 
-The evidence supports a conditional rather than universal conclusion. In the joint low-dimensional confirmatory panel, all 12 formal blocks and 300 model artifacts passed computational checks, but selection-resolved pooled contrasts were close to zero and varied by scenario. A subsequent exact-occupancy analysis found a small Stage-1 degree-1 deviation improvement of approximately 0.0034–0.0036 in four-step TV relative to a shared-global control in a fixed synthetic environment. The improvement remained positive in all 12 outer blocks under the original evaluation batch, a non-overlapping held-out batch, and an independent trajectory-generator seed. Selection-resolved Stage-2 corrections did not add stable improvement. In the high-N experiment, 72/72 blocks passed and all 18 N-by-scenario-by-condition cells had positive mean endpoint changes, but universal accumulation and universal endpoint retention were not supported; effects depended on scenario, condition, metric, and horizon.
+The evidence supports a conditional rather than universal conclusion. In the joint low-dimensional confirmatory panel, all 12 formal blocks and 300 model artifacts passed computational checks, but selection-resolved pooled contrasts were close to zero and varied by scenario. A subsequent exact-occupancy analysis found a small Stage-1 degree-1 deviation improvement of approximately 0.0034–0.0036 in four-step TV relative to a shared-global control in a fixed synthetic environment. The improvement remained positive in all 12 outer blocks under the original evaluation batch, a non-overlapping held-out batch, and a trajectory-generator seed perturbation. These are robustness checks on a shared fixed environment, context, and fitted models, not independent outer replications. Selection-resolved Stage-2 corrections did not add stable improvement. In the high-N experiment, 72/72 blocks passed and all 18 N-by-scenario-by-condition cells had positive mean endpoint changes, but universal accumulation and universal endpoint retention were not supported; effects depended on scenario, condition, metric, and horizon.
 
 The resulting claim is deliberately narrow: a rank-admissible low-dimensional Stage-1 representation can yield a small and reproducible fixed-action predictive association in a controlled synthetic environment, while selection and support coverage remain material bottlenecks. The study does not establish causality, policy value, reward or regret improvement, real-data validity, encoder performance, or deployment benefit.
 
@@ -22,7 +22,7 @@ The study makes four contributions.
 
 1. It separates pipeline completion, contract-valid implementation, held-cell predictive association, and practical or mechanistic improvement.
 2. It compares shared Stage-1 transfer with selection-resolved Stage-2 corrections under joint state–action sparsity.
-3. It uses exact distribution propagation, held-out evaluation rows, and an independent trajectory-generator seed to test a small multi-step effect without introducing Monte Carlo transition noise.
+3. It uses exact distribution propagation, held-out evaluation rows, and a trajectory-generator seed perturbation to test a small multi-step effect without introducing transition Monte Carlo noise; these variants are not independent outer replications.
 4. It treats high-N scaling as a heterogeneous response surface rather than assuming that more data must monotonically improve every metric.
 
 The central result is a boundary, not a universal success claim. A low-dimensional Stage-1 mechanism can show a small local predictive effect, but the current evidence does not justify making it the default transition mechanism under joint sparsity.
@@ -33,11 +33,13 @@ The problem is related to distribution shift and domain generalization, where pe
 
 The contribution is therefore methodological rather than a new claim about real-world domain generalization. The benchmark is designed to expose three distinctions that are easy to collapse: representation capacity versus finite-sample identifiability; shared transfer versus selection-resolved intervention; and one-step predictive association versus multi-step or policy value. The benchmark should be read as a stress test for those distinctions, not as a replacement for real distribution-shift benchmarks.
 
+The study is also adjacent to model-based reinforcement learning, where learned-model bias and rollout horizon affect whether model-generated data should be trusted [4], to offline-RL theory, where coverage and representation conditions constrain generalization [5], and to low-dimensional multi-task transfer [6]. Unlike those lines of work, this paper stops at fixed-action transition prediction and occupancy; it does not evaluate a learned policy, reward, or regret.
+
 ## 3. Research question and estimands
 
 ### 3.1 Research question
 
-Under frozen synthetic transition truth and sparse support, does a low-dimensional action-conditioned shared mechanism improve held-cell transition prediction relative to a shared-global or zero-transfer control, and does that improvement survive exact multi-step propagation, held-out evaluation data, independent trajectory generation, and changes in sequence count?
+Under frozen synthetic transition truth and sparse support, does a low-dimensional action-conditioned shared mechanism improve held-cell transition prediction relative to a shared-global or zero-transfer control, and does that improvement survive exact multi-step propagation, held-out evaluation data, a trajectory-generator perturbation, and changes in sequence count?
 
 ### 3.2 Experimental variables
 
@@ -76,11 +78,11 @@ The benchmark also includes an AR/no-transfer fallback. This fallback is importa
 
 ### 4.3 Exact occupancy evaluation
 
-The exact-rollout package removes transition Monte Carlo noise by propagating the full state distribution through the fitted transition tables for four steps. The same candidate and shared-global control are evaluated under fixed behavior-replay and uniform fixed-action sequences. The protocol is repeated on the original evaluation batch, a non-overlapping held-out batch, and an independent trajectory-generator seed.
+The exact-rollout package removes transition Monte Carlo noise by propagating the full state distribution through the fitted transition tables for four steps. The same candidate and shared-global control are evaluated under fixed behavior-replay and uniform fixed-action sequences. The protocol is repeated on the original evaluation batch, a non-overlapping held-out batch, and a trajectory-generator seed perturbation. The fitted models, synthetic environment, raw context, and outer split structure remain fixed across these variants; they are robustness checks rather than independent outer replications.
 
 ### 4.4 High-N scaling
 
-The high-N design contains 3 sequence counts × 3 scenarios × 2 conditions × 4 fresh split seeds = 72 blocks, with five training seeds per block. The primary readout is the paired `CHANNEL - AR` contrast across N, condition, and scenario. The design is intended to test finite-sample predictive scaling; it is not a causal or policy experiment.
+The high-N design contains 3 sequence counts × 3 scenarios × 2 conditions × 4 fresh split seeds = 72 blocks, with five training seeds per block. The primary readout is the paired `CHANNEL - AR` contrast across N, condition, and scenario. The design is intended to test finite-sample predictive scaling; it is not a causal or policy experiment. We distinguish four audit quantities: positive endpoint means, positive directional `t=4 - t=1` cells, strong accumulation cells exceeding the frozen practical threshold, and universal retention/accumulation requiring the corresponding condition in all 18 cells. The aggregate JSON packages explicitly mark `formal_confirmatory=false` and `causal_eligible=false`.
 
 ## 5. Results
 
@@ -107,11 +109,11 @@ The exact occupancy analysis focused on the degree-1 deviation Stage-1 model rel
 |---|---:|---:|---:|
 | Original evaluation batch | +0.003406 | +0.003386 | 12/12 |
 | Non-overlapping held-out batch | +0.003477 | +0.003329 | 12/12 |
-| Independent trajectory-generator seed | +0.003583 | +0.003495 | 12/12 |
+| Generator-seed perturbation | +0.003583 | +0.003495 | 12/12 |
 
 This is the strongest positive result in the joint low-dimensional branch, but its scope is narrow: fixed synthetic environment, fixed context, fixed action rules, and a comparison against shared-global rather than AR. Selection-resolved correction was not better than Stage-1, and action-groups showed only small and unstable multi-step improvement.
 
-The exact propagation is useful because the sampled rollout showed weaker uniform-action stability. Replacing sampled transitions with full distribution propagation removed that source of noise while retaining the same direction across outer blocks.
+The exact propagation is useful because the sampled rollout showed weaker uniform-action stability. Replacing sampled transitions with full distribution propagation removed that source of noise while retaining the same direction across outer blocks. This is a different estimand from the joint one-step held-cell comparison: it changes the horizon, propagated quantity, fixed action rule, initial distribution, and shared-global control. The positive four-step result is therefore not a replication of the pooled one-step effect.
 
 ### 5.3 High-N scaling
 
@@ -122,7 +124,7 @@ Both high-N packages completed all 72 blocks. Each package had 18 N-by-scenario-
 | Uniform post-first-step actions | 6/18 | 18/18 | 18/18 | No | No |
 | Repeat each held unit's first action | 7/18 | 18/18 | 18/18 | No | No |
 
-The repeat-action package is a sensitivity analysis, not a policy evaluation: after the first held transition, it applies a deterministic fixed action rule rather than a learned controller.
+The repeat-action package is a sensitivity analysis, not a policy evaluation: after the first held transition, it applies a deterministic fixed action rule rather than a learned controller. Neither high-N package is formal confirmatory evidence; their role is to characterize heterogeneous predictive scaling and falsify a universal accumulation claim.
 
 The pattern was heterogeneous. At N=4,096, several S2 state-action contrasts were near zero or negative while S3 was more favorable. At N=65,536, many TV/KL means moved toward transfer, but argmax did not show a uniform improvement and several four-split intervals still crossed zero. Repeat-action evaluation showed a similar qualitative pattern.
 
@@ -138,7 +140,7 @@ The corrected pilot was therefore treated as a retrospective implementation-corr
 
 ### 6.1 What the study establishes
 
-The study establishes a conditional evidence boundary. Unselected or overly broad transfer can be harmful under joint sparsity. A rank-admissible Stage-1 low-dimensional mechanism can produce a small fixed-action predictive association that survives exact propagation, held-out evaluation rows, and an independent generator seed. The effect is not large enough, in the current environment, to justify a universal default or further same-environment tuning. Stage-2 corrections are not automatically valuable; selection frequently chooses no-op and the evaluated corrections do not pass a decision-level gate.
+The study establishes a conditional evidence boundary. Unselected or overly broad transfer can be harmful under joint sparsity. A rank-admissible Stage-1 low-dimensional mechanism can produce a small fixed-action predictive association that survives exact propagation, held-out evaluation rows, and a trajectory-generator perturbation. The effect is not large enough, in the current environment, to justify a universal default or further same-environment tuning. Stage-2 corrections are not automatically valuable; selection frequently chooses no-op and the evaluated corrections do not pass a decision-level gate.
 
 ### 6.2 Representation, support, and selection are separate bottlenecks
 
@@ -168,10 +170,13 @@ The optional deviation should not be enabled by default without an untouched env
 6. No observation encoder is evaluated; the state is supplied in the controlled transition study.
 7. No real-data or causal identification claim is supported.
 8. Large fixtures and NPZ artifacts are not bundled in this repository; the artifact release must be linked before submission.
+9. The three exact-occupancy variants reuse the same fitted models, environment, context, and outer blocks; they are not independent outer replications.
+10. The reported intervals are descriptive summaries across four split clusters, not family-wise-confirmatory hypothesis tests; the high-N N levels are nested prefixes.
+11. The compact repository is not a self-contained rerun environment until the fixtures, manifests, dependencies, and immutable artifact archive are released.
 
 ## 8. Reproducibility and artifact status
 
-The result packages contain frozen configurations, split manifests, runner and aggregator hashes, block reports, model artifacts, and exact-rollout reviews. The repository includes a compact evidence snapshot and the commands used to produce the aggregate reports. Large fixtures are intentionally kept outside the Git repository and should be released as a versioned archive with a DOI or immutable release URL.
+The result packages contain frozen configurations, split manifests, runner and aggregator hashes, block reports, model artifacts, and exact-rollout reviews. The repository includes a compact evidence snapshot and provenance copies of the aggregation scripts. The copied scripts are not self-contained rerun commands: they still require the original fixtures, manifests, dependencies, and runtime layout. Large fixtures are intentionally kept outside the Git repository and should be released as a versioned archive with a DOI or immutable release URL.
 
 The primary source packages are:
 
@@ -193,6 +198,14 @@ The strongest positive result is the degree-1 deviation Stage-1 exact-occupancy 
 The repository's `paper/claims.md` is the operational claim ledger. The source report snapshots under `evidence/source_reports/` are the compact provenance layer; the large fixtures and model arrays remain pending an immutable artifact release.
 Both aggregate JSON records mark the packages as pipeline-eligible and predictive-eligible, but `formal_confirmatory=false` and `causal_eligible=false`. Those flags are part of the reported result, not an implementation footnote.
 
+## Appendix B. Estimands and audit definitions
+
+For candidate model `c` and declared control `b`, one-step cell-level improvements are defined as `ΔTV = TV(b) - TV(c)`, `ΔKL = KL(b) - KL(c)`, and `ΔA = A(c) - A(b)`, so positive values favor the candidate. The joint panel aggregates these improvements over held cells and scenario-by-split outer units; its intervals are descriptive mean plus or minus 1.96 standard errors across the four split clusters within each scenario.
+
+The exact-rollout estimand is the absolute horizon-four TV difference between the shared-global control and the degree-1 deviation Stage-1 candidate after exact propagation under a fixed action rule and initial distribution. It is not the same estimand as the joint one-step cell average.
+
+For high-N, the primary accumulation contrast is the paired improvement at `t=4` minus the paired improvement at `t=1`. A positive endpoint mean is an average direction within one N-by-scenario-by-condition cell; directional positivity requires that contrast to be positive, while strong accumulation additionally requires the frozen practical threshold of 0.005. Universal claims require the corresponding condition in all 18 cells and are rejected by either aggregate JSON package.
+
 ## References
 
 [1] Koh, P. W., Sagawa, S., Marklund, H., et al. “WILDS: A Benchmark of in-the-Wild Distribution Shifts.” *Proceedings of ICML*, 2021. https://proceedings.mlr.press/v139/koh21a.html
@@ -200,3 +213,9 @@ Both aggregate JSON records mark the packages as pipeline-eligible and predictiv
 [2] Siddiqi, S. M., Boots, B., and Gordon, G. J. “Reduced-Rank Hidden Markov Models.” *Proceedings of AISTATS*, 2010. https://proceedings.mlr.press/v9/siddiqi10a.html
 
 [3] Sun, W., Venkatraman, A., Boots, B., and Bagnell, J. A. “Learning to Filter with Predictive State Inference Machines.” *Proceedings of ICML*, 2016. https://proceedings.mlr.press/v48/sun16.html
+
+[4] Janner, M., Fu, J., Zhang, M., and Levine, S. “When to Trust Your Model: Model-Based Policy Optimization.” *Advances in Neural Information Processing Systems*, 2019. https://proceedings.neurips.cc/paper/2019/hash/5faf461eff3099671ad63c6f3f094f7f-Abstract.html
+
+[5] Foster, D. J., Krishnamurthy, A., Simchi-Levi, D., and Xu, Y. “Offline Reinforcement Learning: Fundamental Barriers for Value Function Approximation.” *Proceedings of COLT*, 2022. https://proceedings.mlr.press/v178/foster22a.html
+
+[6] Cella, L., Lounici, K., Pacreau, G., and Pontil, M. “Multi-task Representation Learning with Stochastic Linear Bandits.” *Proceedings of AISTATS*, 2023. https://proceedings.mlr.press/v206/cella23a.html
