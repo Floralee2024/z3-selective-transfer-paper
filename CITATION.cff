@@ -3,8 +3,8 @@ title: "Selection-Gated Transfer Under Sparse State–Action Support"
 message: "If you use this manuscript or its evidence protocol, please cite the repository."
 type: software
 authors:
-  - family-names: "Project authors"
-    given-names: ""
+  - family-names: "Lee"
+    given-names: "Flora"
 version: 0.1.0
 date-released: 2026-09-20
 url: https://github.com/Floralee2024/z3-selective-transfer-paper
