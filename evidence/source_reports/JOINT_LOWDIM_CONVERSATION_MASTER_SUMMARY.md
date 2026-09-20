@@ -371,12 +371,12 @@ Stage-2 没有额外收益、action-groups rollout 不稳定，都是有效结�
 
 ## 9. 主要产物索引
 
-- Corrected sampled rollout：[ENV2_V2_REVIEW.md](joint_lowdim_rollout_env2_v2_20260803/ENV2_V2_REVIEW.md)
-- Reference exact propagation：[EXACT_OCCUPANCY_REVIEW.md](joint_lowdim_exact_occupancy_env2_v1_20260803/EXACT_OCCUPANCY_REVIEW.md)
-- Disjoint holdout：[HOLDOUT_EVALUATION_REVIEW.md](joint_lowdim_exact_occupancy_holdout_env2_v1_20260803/HOLDOUT_EVALUATION_REVIEW.md)
-- Independent generator seed：[INDEPENDENT_GENERATOR_SEED_REVIEW.md](joint_lowdim_independent_generator_seed_20261301_env2_v1_20260803/INDEPENDENT_GENERATOR_SEED_REVIEW.md)
-- Independent generation audit：[generation_report.json](joint_lowdim_independent_generator_seed_20261301_env2_v1_20260803/generation_report.json)
-- New-seed exact comparison：[newseed_vs_reference_aggregate.json](joint_lowdim_independent_generator_seed_20261301_env2_v1_20260803/newseed_vs_reference/newseed_vs_reference_aggregate.json)
+- Corrected sampled rollout：`ENV2_V2_REVIEW.md` (large source artifact not included in compact release)
+- Reference exact propagation：`EXACT_OCCUPANCY_REVIEW.md` (large source artifact not included in compact release)
+- Disjoint holdout：`HOLDOUT_EVALUATION_REVIEW.md` (large source artifact not included in compact release)
+- Independent generator seed：`INDEPENDENT_GENERATOR_SEED_REVIEW.md` (large source artifact not included in compact release)
+- Independent generation audit：`generation_report.json` (large source artifact not included in compact release)
+- New-seed exact comparison：`newseed_vs_reference_aggregate.json` (large source artifact not included in compact release)
 
 ## 10. 最终一句话版本
 
