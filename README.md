@@ -15,17 +15,17 @@ The result is predictive synthetic evidence. It is not causal, policy, reward, r
 
 ## Repository layout
 
-- paper/manuscript.md — complete manuscript draft.
-- paper/claims.md — claim-to-evidence ledger and non-claims.
-- vidence/ — compact evidence snapshots and provenance notes.
-- eproducibility/ — commands, environment notes, and artifact mapping.
-- CITATION.cff — citation metadata for the repository.
+- `paper/manuscript.md` — complete manuscript draft.
+- `paper/claims.md` — claim-to-evidence ledger and non-claims.
+- `evidence/` — compact evidence snapshots and provenance notes.
+- `reproducibility/` — commands, environment notes, and artifact mapping.
+- `CITATION.cff` — citation metadata for the repository.
 
 ## Reproducibility status
 
 The repository is the compact manuscript and provenance layer. Large fixtures, model artifacts, and NPZ bundles are distributed in the companion immutable artifact release rather than committed into Git history.
 
-The public artifact release is [v0.1.0](https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0). Its direct archive URL, SHA256, and version are recorded in [eproducibility/ARTIFACT_RELEASE.md](reproducibility/ARTIFACT_RELEASE.md).
+The public artifact release is [v0.1.0](https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0). Its direct archive URL, SHA256, and version are recorded in [`reproducibility/ARTIFACT_RELEASE.md`](reproducibility/ARTIFACT_RELEASE.md).
 
 ## Status
 
