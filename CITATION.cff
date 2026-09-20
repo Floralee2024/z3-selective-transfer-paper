@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "Selection-Gated Transfer Under Sparse State–Action Support"
+message: "If you use this manuscript or its evidence protocol, please cite the repository."
+type: software
+authors:
+  - family-names: "Project authors"
+    given-names: ""
+version: 0.1.0
+date-released: 2026-09-20
+url: https://github.com/Floralee2024/z3-selective-transfer-paper
+abstract: >-
+  A synthetic study of selection-gated low-dimensional transfer under sparse
+  state-action support, exact rollout, and high-N scaling.
+keywords:
+  - distribution shift
+  - selective transfer
+  - synthetic benchmark
+  - predictive state
+  - sparse state-action support
+license: CC-BY-4.0
