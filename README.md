@@ -15,7 +15,7 @@ The result is predictive synthetic evidence. It is not causal, policy, reward, r
 
 ## Repository layout
 
-- `paper/manuscript.md` — complete public preprint draft.
+- `paper/manuscript.md` — complete manuscript draft.
 - `paper/claims.md` — claim-to-evidence ledger and non-claims.
 - `evidence/` — compact evidence snapshots and provenance notes.
 - `reproducibility/` — commands, environment notes, and artifact mapping.
@@ -29,6 +29,6 @@ For a submission-grade release, publish the large immutable artifact bundle sepa
 
 ## Status
 
-Public preprint draft. The wording intentionally preserves the strongest evidence boundary supported by the experiments.
+Private manuscript repository. The wording intentionally preserves the strongest evidence boundary supported by the experiments; public release still requires author metadata and an immutable artifact archive.
 
 The compact evidence package includes the primary exact held-unit high-N aggregate and its repeat-action sensitivity aggregate. Both preserve the same negative conclusion about universal accumulation and endpoint retention.
