@@ -2,21 +2,23 @@
 
 ## Source artifact map
 
-The manuscript was assembled from the following frozen result packages in the source workspace:
+The manuscript was assembled from frozen result packages in the source workspace. The large binary inputs and model artifacts are published in the companion immutable artifact release below.
 
-```text
-D:\Codex\2026-07-30\action-only-runner-16-cpu-32gb\outputs\joint_lowdim_confirm_aggregate_20260801_final
-D:\Codex\2026-08-03\joint-lowdim-rollout-60-60-block\outputs
-D:\Codex\2026-07-30\action-only-runner-16-cpu-32gb\outputs\high_n_exact_held_confirm_20260804_aggregate
-D:\Codex\2026-07-30\action-only-runner-16-cpu-32gb\outputs\high_n_exact_held_repeat_action_confirm_20260804_aggregate
-D:\Codex\2026-07-30\action-only-runner-16-cpu-32gb\outputs\Z3_SELECTIVE_TRANSFER_FINAL_INTEGRATED_REPORT_20260804.md
-```
+## Published artifact release
+
+- Release page: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0
+- Archive: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip
+- SHA256: $hash
+- Version: 0.1.0
+- SHA256 sidecar: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip.sha256
+
+The release contains the low-dimensional confirm package, canonical fixtures, exact-rollout packages, High-N scaling and exact-held packages, model artifacts, contracts, frozen configurations, work code, and runbooks.
 
 ## Aggregation entry points
 
-The source workspace contains these aggregation and execution entry points. Provenance copies are included under `reproducibility/source/`, but they are not self-contained rerun commands because the large fixtures, manifests, dependencies, and original runtime layout are not included:
+The source workspace contains these aggregation and execution entry points. Provenance copies are included under eproducibility/source/; the companion artifact release supplies the large fixtures, manifests, contracts, model artifacts, and original runtime inputs needed for reruns:
 
-```text
+`	ext
 original source entry points:
 work\aggregate_joint_lowdim_confirm_v1.py
 work\run_joint_lowdim_v1_serial.ps1
@@ -28,15 +30,11 @@ reproducibility/source/aggregate_joint_lowdim_confirm_v1.py
 reproducibility/source/run_joint_lowdim_v1_serial.ps1
 reproducibility/source/aggregate_high_n_scaling_v1.py
 reproducibility/source/run_high_n_scaling_v1_serial.ps1
-```
+`
 
 The high-N formal design is 3 N levels × 3 scenarios × 2 conditions × 4 split seeds = 72 blocks, with five training seeds per block.
 
 The compact evidence package includes both exact held-unit high-N aggregates: the uniform post-first-step action mixture and the repeat-action sensitivity package. The latter repeats each held unit's first action after the first transition; it is a fixed evaluation rule, not a learned policy.
-
-## Required artifact release before submission
-
-The large fixture and model bundles should be published as an immutable release or archive. Add its URL and checksum to `ARTIFACT_RELEASE.md` before claiming full public reproducibility. The current GitHub repository is a manuscript and provenance package, not a replacement for the large binary artifact archive.
 
 ## Reproduction contract
 
