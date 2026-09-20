@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+outputs/
+artifacts/
+*.npz
+*.npy
+*.pt
+*.pth
+*.tar
+*.zip
