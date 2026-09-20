@@ -14,13 +14,20 @@ D:\Codex\2026-07-30\action-only-runner-16-cpu-32gb\outputs\Z3_SELECTIVE_TRANSFER
 
 ## Aggregation entry points
 
-The source workspace contains these aggregation and execution entry points:
+The source workspace contains these aggregation and execution entry points. Provenance copies are included under `reproducibility/source/`, but they are not self-contained rerun commands because the large fixtures, manifests, dependencies, and original runtime layout are not included:
 
 ```text
+original source entry points:
 work\aggregate_joint_lowdim_confirm_v1.py
 work\run_joint_lowdim_v1_serial.ps1
 work\aggregate_high_n_scaling_v1.py
 work\run_high_n_scaling_v1_serial.ps1
+
+repository provenance copies:
+reproducibility/source/aggregate_joint_lowdim_confirm_v1.py
+reproducibility/source/run_joint_lowdim_v1_serial.ps1
+reproducibility/source/aggregate_high_n_scaling_v1.py
+reproducibility/source/run_high_n_scaling_v1_serial.ps1
 ```
 
 The high-N formal design is 3 N levels × 3 scenarios × 2 conditions × 4 split seeds = 72 blocks, with five training seeds per block.
