@@ -8,17 +8,17 @@ The manuscript was assembled from frozen result packages in the source workspace
 
 - Release page: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0
 - Archive: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip
-- SHA256: $hash
-- Version: 0.1.0
+- SHA256: `1f8221ec5b25dbb03a78bc83366b5878259660fd3cd74cf631a92888f8d1b5ae`
+- Version: `v0.1.0`
 - SHA256 sidecar: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip.sha256
 
 The release contains the low-dimensional confirm package, canonical fixtures, exact-rollout packages, High-N scaling and exact-held packages, model artifacts, contracts, frozen configurations, work code, and runbooks.
 
 ## Aggregation entry points
 
-The source workspace contains these aggregation and execution entry points. Provenance copies are included under eproducibility/source/; the companion artifact release supplies the large fixtures, manifests, contracts, model artifacts, and original runtime inputs needed for reruns:
+The source workspace contains these aggregation and execution entry points. Provenance copies are included under `reproducibility/source/`; the companion artifact release supplies the large fixtures, manifests, contracts, model artifacts, and original runtime inputs needed for reruns:
 
-`	ext
+~~~text
 original source entry points:
 work\aggregate_joint_lowdim_confirm_v1.py
 work\run_joint_lowdim_v1_serial.ps1
@@ -29,8 +29,8 @@ repository provenance copies:
 reproducibility/source/aggregate_joint_lowdim_confirm_v1.py
 reproducibility/source/run_joint_lowdim_v1_serial.ps1
 reproducibility/source/aggregate_high_n_scaling_v1.py
-reproducibility/source/run_high_n_scaling_v1_serial.ps1
-`
+reproducibility/source/run_high_n_scaling_v1.ps1
+~~~
 
 The high-N formal design is 3 N levels × 3 scenarios × 2 conditions × 4 split seeds = 72 blocks, with five training seeds per block.
 
