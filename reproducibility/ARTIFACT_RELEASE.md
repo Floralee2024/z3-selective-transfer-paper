@@ -1,17 +1,19 @@
 # Artifact release record
 
-## Current status
+## Published release
 
-The GitHub repository currently contains the manuscript, compact evidence snapshot, source report excerpts, aggregators, and run scripts. The large fixtures, model artifacts, and NPZ files remain in the source workspace and have not yet been uploaded to an immutable public archive.
+The immutable reproducibility artifact bundle is publicly available from the GitHub Release:
 
-## Required before submission
+- Release page: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/tag/v0.1.0
+- Archive download: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip
+- SHA256 sidecar: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip.sha256
 
-Replace the fields below after uploading the binary artifact bundle:
+`	ext
+archive_url: https://github.com/Floralee2024/z3-selective-transfer-paper/releases/download/v0.1.0/z3_selective_transfer_artifact_v0.1.0_20260920.zip
+archive_sha256: 1f8221ec5b25dbb03a78bc83366b5878259660fd3cd74cf631a92888f8d1b5ae
+archive_version: v0.1.0
+`
 
-```text
-archive_url: REPLACE_WITH_DOI_OR_IMMUTABLE_RELEASE_URL
-archive_sha256: REPLACE_WITH_ARCHIVE_SHA256
-archive_version: REPLACE_WITH_VERSION
-```
+The archive includes the frozen fixtures, split manifests, contracts, model artifacts, block reports, exact-rollout outputs, High-N scaling outputs, and runbooks. The archive README states the evidence boundary explicitly: the artifacts support synthetic predictive claims only, not causal, policy, reward, planning, real-data, or deployment claims.
 
-The release must include the frozen fixture, split manifests, contracts, model artifacts, block reports, exact-rollout outputs, and the high-N aggregates. The release README must state that the artifacts support synthetic predictive claims only.
+The GitHub repository remains the compact manuscript and provenance layer; the binary artifact archive is the companion release for full artifact access.
